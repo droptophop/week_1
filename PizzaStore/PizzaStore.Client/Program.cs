@@ -17,10 +17,12 @@ namespace PizzaStore.Client
 
             // var cart = new String[10];
 
-            List<Pizza> cart2 = new List<Pizza>();
+            var cart = new Cart();
+
+            // List<Pizza> cart2 = new List<Pizza>();
 
             // Menu(cart);
-            Menu2(cart2);
+            Menu2(cart);
         }
 
         // static void Menu(String[] cart)
@@ -84,7 +86,7 @@ namespace PizzaStore.Client
         //     } while (!exit);
         // }
 
-        static void Menu2(List<Pizza> cart)
+        static void Menu2(Cart cart)
         {
             var exit = false;
             var startup = new Startup();
@@ -105,23 +107,23 @@ namespace PizzaStore.Client
                 switch (select) 
                 {
                     case 1:
-                        var p = startup.CreatePizza("L", "deep dish", new List<string>{"Cheese"});
-                        cart.Add(p);
+                        cart.AddPizza(startup.CreatePizza("L", "Deep Dish Crust", new List<string>{"Cheese"}));
                         Console.WriteLine($"Cheese Pizza Added To Cart\n");
                         break;
                     case 2:
-                        cart.Add(startup.CreatePizza("L", "pan", new List<String>{"Pepperoni"}));
+                        cart.AddPizza(startup.CreatePizza("L", "Pan Crust", new List<String>{"Cheese, Pepperoni"}));
                         Console.WriteLine($"Pepperoni Pizza Added To Cart\n");
                         break;
                     case 3:
-                        cart.Add(startup.CreatePizza("L", "pan", new List<String>{"Sausage, Pepperoni"}));
+                        cart.AddPizza(startup.CreatePizza("L", "Thin Crust", new List<String>{"Cheese, Sausage"}));
                         Console.WriteLine($"Sausage Pizza Added To Cart\n");
                         break;
                     case 4:
-                        //
+                        cart.AddPizza(startup.CreatePizza("L", "Stuffed Crust", new List<String>{"Cheese, Pepperoni, Sausage, Onions, Bell Peppers, Olives"}));
+                        Console.WriteLine($"Custom Pizza Added To Cart\n");
                         break;
                     case 5:
-                        displayCart2(cart);
+                        cart.displayCart();
                         break;
                     case 6:
                         Console.WriteLine("Thanks for visiting!\nSee you next time!");
@@ -140,14 +142,14 @@ namespace PizzaStore.Client
         //     }
         // }
 
-        static void displayCart2(List<Pizza> cart)
-        {
-            Console.WriteLine("------ Cart ------");
-            foreach(Pizza pizza in cart)
-            {
-                Console.WriteLine(pizza);
-            }
-            Console.WriteLine("------ **** ------\n");
-        }
+        // static void displayCart2(Cart cart)
+        // {
+        //     Console.WriteLine("------ Cart ------");
+        //     foreach(Pizza pizza in cart.List)
+        //     {
+        //         Console.WriteLine(pizza);
+        //     }
+        //     Console.WriteLine("------ **** ------\n");
+        // }
     }
 }
