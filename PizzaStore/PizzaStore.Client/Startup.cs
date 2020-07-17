@@ -6,16 +6,20 @@ namespace PizzaStore.Client
 {
     internal class Startup
     {
-        internal Pizza CreatePizza(string size, string crust, List<string> toppings) 
+        internal Order CreateOrder(User user, Store store) 
         {
-            var toppingList = new List<string>();
-            toppingList.AddRange(toppings);
-            Pizza pizza = new Pizza(size, crust, toppingList);
-            // pizza.Size = size;
-            // pizza.Crust = crust;
-            // pizza.Toppings.AddRange(toppings);
+            try
+            {
+                var order = new Order();
+        
+                user.Orders.Add(order);
+                store.Orders.Add(order);
 
-            return pizza;
+                return order;
+            } catch
+            {
+                throw new System.Exception("Unfortunately, at this time, we are unable to fill your order.");
+            }
         }
     }
 }
