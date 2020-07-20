@@ -4,219 +4,251 @@ using PizzaStore.Domain.Models;
 
 namespace PizzaStore.Client
 {
-    class Program
+  class Program
+  {
+    static void Main()
     {
-        static void Main()
-        {
-            Welcome();
-        }
-
-        static void Welcome() 
-        {
-            Console.WriteLine("Welcome To The Leaning Tower of Pizza");
-
-            // var cart = new String[10];
-
-            // var cart = new Cart();
-
-            // List<Pizza> cart2 = new List<Pizza>();
-
-            // Menu(cart);
-            // Menu2(cart);
-
-            var startup = new PizzaStore.Client.Startup();
-            var user = new User();
-            var store = new Store();
-            var order = startup.CreateOrder(user, store);
-
-            try
-            {
-                Menu3(order);
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            
-            // if (order == null)
-            // {
-            //     Menu3(startup.CreateOrder(user, store));
-            // } else {
-            //     Console.WriteLine("Unfortunately, at this time, we are unable to fill your order.");
-            // }
-        }
-
-        static void Menu3(Order cart)
-        {
-            var exit = false;
-
-            do {
-                Console.WriteLine("------ Menu ------");
-                Console.WriteLine("Select 1 For Cheese Pizza");
-                Console.WriteLine("Select 2 For Pepperoni Pizza");
-                Console.WriteLine("Select 3 For Sausage Pizza");
-                Console.WriteLine("Select 4 For Customized Pizza");
-                Console.WriteLine("Select 5 To View Cart");
-                Console.WriteLine("Select 6 To Exit\n");
-
-                int select;
-
-                int.TryParse(Console.ReadLine(), out select);
-
-                switch (select) 
-                {
-                    case 1:
-                        cart.CreatePizza("L", "Deep Dish Crust", new List<string>{"Cheese"});
-                        Console.WriteLine($"Cheese Pizza Added To Cart\n");
-                        break;
-                    case 2:
-                        cart.CreatePizza("L", "Pan Crust", new List<String>{"Cheese, Pepperoni"});
-                        Console.WriteLine($"Pepperoni Pizza Added To Cart\n");
-                        break;
-                    case 3:
-                        cart.CreatePizza("L", "Thin Crust", new List<String>{"Cheese, Sausage"});
-                        Console.WriteLine($"Sausage Pizza Added To Cart\n");
-                        break;
-                    case 4:
-                        cart.CreatePizza("L", "Stuffed Crust", new List<String>{"Cheese, Pepperoni, Sausage, Onions, Bell Peppers, Olives"});
-                        Console.WriteLine($"Custom Pizza Added To Cart\n");
-                        break;
-                    case 5:
-                        displayCart(cart);
-                        break;
-                    case 6:
-                        Console.WriteLine("Thanks for visiting!\nSee you next time!");
-                        exit = true;
-                        break;
-                }
-            } while (!exit);
-        }
-
-        // static void Menu(String[] cart)
-        // {
-        //     var exit = false;
-        //     var index = 0;
-
-        //     do {
-        //         Console.WriteLine("------ Menu ------");
-        //         Console.WriteLine("Select 1 for a Cheese Pizza");
-        //         Console.WriteLine("Select 2 for a Pepperoni Pizza");
-        //         Console.WriteLine("Select 3 for a Sausage Pizza");
-        //         Console.WriteLine("Select 4 for a Supreme Pizza");
-        //         Console.WriteLine("Select 5 for a Custom Pizza");
-        //         Console.WriteLine("Select 6 to view Cart");
-        //         Console.WriteLine("Select 7 to exit\n");
-
-        //         int select;
-
-        //         int.TryParse(Console.ReadLine(), out select);
-
-        //         if (cart.Length > index) 
-        //         {
-        //             switch (select) 
-        //             {
-        //                 case 1:
-        //                     cart[index] = "Cheese";
-        //                     Console.WriteLine($"{cart[index]} Pizza Added To Cart\n");
-        //                     index += 1;
-        //                     break;
-        //                 case 2:
-        //                     cart[index] = "Pepperoni";
-        //                     Console.WriteLine($"{cart[index]} Pizza Added To Cart\n");
-        //                     index += 1;
-        //                     break;
-        //                 case 3:
-        //                     cart[index] = "Sausage";
-        //                     Console.WriteLine($"{cart[index]} Pizza Added To Cart\n");
-        //                     index += 1;
-        //                     break;
-        //                 case 4:
-        //                     cart[index] = "Supreme";
-        //                     Console.WriteLine($"{cart[index]} Pizza Added To Cart\n");
-        //                     index += 1;
-        //                     break;
-        //                 case 5:
-        //                     // TODO: Create 'custom pizza' functionality
-        //                     break;
-        //                 case 6:
-        //                     displayCart(cart);
-        //                     break;
-        //                 case 7:
-        //                     Console.WriteLine("Thanks for visiting!\nSee you next time!");
-        //                     exit = true;
-        //                     break;
-        //             }
-        //         } else 
-        //         {
-        //             displayCart(cart);
-        //         }
-        //     } while (!exit);
-        // }
-
-        // static void Menu2(Cart cart)
-        // {
-        //     var exit = false;
-
-        //     do {
-        //         Console.WriteLine("------ Menu ------");
-        //         Console.WriteLine("Select 1 For Cheese Pizza");
-        //         Console.WriteLine("Select 2 For Pepperoni Pizza");
-        //         Console.WriteLine("Select 3 For Sausage Pizza");
-        //         Console.WriteLine("Select 4 For Customized Pizza");
-        //         Console.WriteLine("Select 5 To View Cart");
-        //         Console.WriteLine("Select 6 To Exit\n");
-
-        //         int select;
-
-        //         int.TryParse(Console.ReadLine(), out select);
-
-        //         switch (select) 
-        //         {
-        //             case 1:
-        //                 cart.AddPizza(startup.CreatePizza("L", "Deep Dish Crust", new List<string>{"Cheese"}));
-        //                 Console.WriteLine($"Cheese Pizza Added To Cart\n");
-        //                 break;
-        //             case 2:
-        //                 cart.AddPizza(startup.CreatePizza("L", "Pan Crust", new List<String>{"Cheese, Pepperoni"}));
-        //                 Console.WriteLine($"Pepperoni Pizza Added To Cart\n");
-        //                 break;
-        //             case 3:
-        //                 cart.AddPizza(startup.CreatePizza("L", "Thin Crust", new List<String>{"Cheese, Sausage"}));
-        //                 Console.WriteLine($"Sausage Pizza Added To Cart\n");
-        //                 break;
-        //             case 4:
-        //                 cart.AddPizza(startup.CreatePizza("L", "Stuffed Crust", new List<String>{"Cheese, Pepperoni, Sausage, Onions, Bell Peppers, Olives"}));
-        //                 Console.WriteLine($"Custom Pizza Added To Cart\n");
-        //                 break;
-        //             case 5:
-        //                 cart.displayCart();
-        //                 break;
-        //             case 6:
-        //                 Console.WriteLine("Thanks for visiting!\nSee you next time!");
-        //                 exit = true;
-        //                 break;
-        //         }
-        //     } while (!exit);
-        // }
-
-        static void displayCart(Order cart)
-        {
-            Console.WriteLine("------ Cart ------");
-            foreach(var pizza in cart.Pizzas)
-            {
-                Console.WriteLine(pizza);
-            }
-            Console.WriteLine("------ **** ------\n");
-        }
-
-        // static void displayCart2(Cart cart)
-        // {
-        //     Console.WriteLine("------ Cart ------");
-        //     foreach(Pizza pizza in cart.List)
-        //     {
-        //         Console.WriteLine(pizza);
-        //     }
-        //     Console.WriteLine("------ **** ------\n");
-        // }
+      Welcome();
     }
+
+    static void Welcome()
+    {
+      System.Console.WriteLine("Welcome to PizzaWorld");
+      System.Console.WriteLine("Best Pizza in the World");
+      System.Console.WriteLine();
+
+      // array
+      //1-dimensional
+      string[] cart1 = { "", "", "" }; // initial values
+      string[] cart2 = new string[3]; // default values
+      string[] cart3 = new[] { "", "", "" }; // initial values - custom datatypes or earlier C# versions
+
+      // list
+      List<string> cart4 = new List<string> { "", "", "" }; // initial values
+      List<string> cart5 = new List<string>(); // default values
+      List<Pizza> cart6 = new List<Pizza>();
+
+      //Menu(cart2);
+      //Menu2(cart6);
+
+      var starter = new Starter();
+      var user = new User();
+      var store = new Store();
+
+      //var order = startup.CreateOrder(user, store);
+      // if (order != null)
+      // {
+      //   Menu3(order);
+      // }
+      // else
+      // {
+      //   System.Console.WriteLine("technical difficulties, we be back!");
+      // }
+
+      try
+      {
+        Menu(starter.CreateOrder(user, store));
+      }
+      catch (Exception ex)
+      {
+        System.Console.WriteLine(ex.Message);
+      }
+    }
+
+    // static void Menu(string[] cart)
+    // {
+    //   var exit = false;
+    //   var number = 0;
+
+    //   do
+    //   {
+    //     if (number < cart.Length)
+    //     {
+    //       System.Console.WriteLine("Select 1 for Cheese Pizza");
+    //       System.Console.WriteLine("Select 2 for Pepperoni Pizza");
+    //       System.Console.WriteLine("Select 3 for Pineapple Pizza");
+    //       System.Console.WriteLine("Select 4 for Custom Pizza");
+    //       System.Console.WriteLine("Select 5 for Show Cart");
+    //       System.Console.WriteLine("Select 6 for Exit");
+    //       System.Console.WriteLine();
+
+    //       int select;
+
+    //       int.TryParse(Console.ReadLine(), out select);
+
+    //       switch (select)
+    //       {
+    //         case 1:
+    //           cart[number] = "cheese";
+    //           number += 1;
+    //           System.Console.WriteLine("added Cheese");
+    //           break;
+    //         case 2:
+    //           cart[number] = "pepperoni";
+    //           number += 1;
+    //           System.Console.WriteLine("added Pepperoni");
+    //           break;
+    //         case 3:
+    //           cart[number] = "pineapple";
+    //           number += 1;
+    //           System.Console.WriteLine("added Pineapple");
+    //           break;
+    //         case 4:
+    //           cart[number] = "custom";
+    //           number += 1;
+    //           System.Console.WriteLine("added Custom");
+    //           break;
+    //         case 5:
+    //           DisplayCart(cart);
+    //           break;
+    //         case 6:
+    //           System.Console.WriteLine("thank you, goodbye!");
+    //           exit = true;
+    //           break;
+    //       }
+    //     }
+    //     else
+    //     {
+    //       DisplayCart(cart);
+    //       exit = true;
+    //     }
+    //   } while (!exit);
+    // }
+
+    // static void Menu2(List<Pizza> cart)
+    // {
+    //   var exit = false;
+    //   var number = 0;
+    //   var startup = new PizzaStore.Client.Startup();
+
+    //   do
+    //   {
+    //     if (number < 10)
+    //     {
+    //       System.Console.WriteLine("Select 1 for Cheese Pizza");
+    //       System.Console.WriteLine("Select 2 for Pepperoni Pizza");
+    //       System.Console.WriteLine("Select 3 for Pineapple Pizza");
+    //       System.Console.WriteLine("Select 4 for Custom Pizza");
+    //       System.Console.WriteLine("Select 5 for Show Cart");
+    //       System.Console.WriteLine("Select 6 for Exit");
+    //       System.Console.WriteLine();
+
+    //       int select;
+
+    //       int.TryParse(Console.ReadLine(), out select);
+
+    //       switch (select)
+    //       {
+    //         case 1:
+    //           cart.Add(startup.CreatePizza("L", "Stuffed", new List<string>{"cheese"}));
+    //           number += 1;
+    //           System.Console.WriteLine("added Cheese");
+    //           break;
+    //         case 2:
+    //           cart.Add(startup.CreatePizza("L", "Stuffed", new List<string>{"pepperoni"}));
+    //           number += 1;
+    //           System.Console.WriteLine("added Pepperoni");
+    //           break;
+    //         case 3:
+    //           cart.Add(startup.CreatePizza("L", "Stuffed", new List<string>{"pineapple"}));
+    //           number += 1;
+    //           System.Console.WriteLine("added Pineapple");
+    //           break;
+    //         case 4:
+    //           cart.Add(startup.CreatePizza("L", "Stuffed", new List<string>{"custom"}));
+    //           number += 1;
+    //           System.Console.WriteLine("added Custom");
+    //           break;
+    //         case 5:
+    //           DisplayCart2(cart);
+    //           break;
+    //         case 6:
+    //           System.Console.WriteLine("thank you, goodbye!");
+    //           exit = true;
+    //           break;
+    //       }
+    //     }
+    //     else
+    //     {
+    //       DisplayCart2(cart);
+    //       exit = true;
+    //     }
+
+    //     System.Console.WriteLine();
+    //   } while (!exit);
+    // }
+
+    // static void DisplayCart(string[] cart)
+    // {
+    //   foreach (var pizza in cart)
+    //   {
+    //     System.Console.WriteLine(pizza);
+    //   }
+    // }
+
+    // static void DisplayCart2(List<Pizza> cart)
+    // {
+    //   foreach (var pizza in cart)
+    //   {
+    //     System.Console.WriteLine(pizza);
+    //   }
+    // }
+
+    static void Menu(Order cart)
+    {
+      var exit = false;
+
+      do
+      {
+        Starter.PrintMenu();
+
+        int select;
+
+        int.TryParse(Console.ReadLine(), out select);
+
+        switch (select)
+        {
+          case 1:
+            cart.CreatePizza("L", "Deep Dish Crust", new List<string>{"Cheese"});
+            Console.WriteLine($"Cheese Pizza Added To Cart\n");
+            break;
+        case 2:
+            cart.CreatePizza("L", "Pan Crust", new List<String>{"Cheese, Pepperoni"});
+            Console.WriteLine($"Pepperoni Pizza Added To Cart\n");
+            break;
+        case 3:
+            cart.CreatePizza("L", "Thin Crust", new List<String>{"Cheese, Sausage"});
+            Console.WriteLine($"Sausage Pizza Added To Cart\n");
+            break;
+        case 4:
+            cart.CreatePizza("L", "Stuffed Crust", new List<String>{"Cheese, Pepperoni, Sausage, Onions, Bell Peppers, Olives"});
+            Console.WriteLine($"Custom Pizza Added To Cart\n");
+            break;
+          case 5:
+            DisplayCart(cart);
+            break;
+          case 6:
+            var fmw = new FileManager();
+            fmw.Write(cart);
+            System.Console.WriteLine("thank you, goodbye!");
+            exit = true;
+            break;
+          case 7:
+            var fmr = new FileManager();
+            DisplayCart(fmr.Read());
+            break;
+        }
+
+        System.Console.WriteLine();
+      } while (!exit);
+    }
+
+    static void DisplayCart(Order cart)
+    {
+      foreach (var pizza in cart.Pizzas)
+      {
+        System.Console.WriteLine(pizza);
+      }
+    }
+  }
 }

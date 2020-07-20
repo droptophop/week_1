@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Pizzas>
+    <Pizza>
+      <Toppings>
+        <string>Cheese</string>
+      </Toppings>
+    </Pizza>
+    <Pizza>
+      <Toppings>
+        <string>Cheese, Pepperoni</string>
+      </Toppings>
+    </Pizza>
+    <Pizza>
+      <Toppings>
+        <string>Cheese, Sausage</string>
+      </Toppings>
+    </Pizza>
+    <Pizza>
+      <Toppings>
+        <string>Cheese, Pepperoni, Sausage, Onions, Bell Peppers, Olives</string>
+      </Toppings>
+    </Pizza>
+  </Pizzas>
+</Order>
