@@ -13,9 +13,7 @@ namespace PizzaStore.Client
 
     static void Welcome()
     {
-      System.Console.WriteLine("Welcome to PizzaWorld");
-      System.Console.WriteLine("Best Pizza in the World");
-      System.Console.WriteLine();
+      System.Console.WriteLine("Welcome to The Leaning Tower of Pizza");
 
       // array
       //1-dimensional
@@ -210,19 +208,19 @@ namespace PizzaStore.Client
         {
           case 1:
             cart.CreatePizza("L", "Deep Dish Crust", new List<string>{"Cheese"});
-            Console.WriteLine($"Cheese Pizza Added To Cart\n");
+            Console.WriteLine("Cheese Pizza Added To Cart\n");
             break;
         case 2:
             cart.CreatePizza("L", "Pan Crust", new List<String>{"Cheese, Pepperoni"});
-            Console.WriteLine($"Pepperoni Pizza Added To Cart\n");
+            Console.WriteLine("Pepperoni Pizza Added To Cart\n");
             break;
         case 3:
             cart.CreatePizza("L", "Thin Crust", new List<String>{"Cheese, Sausage"});
-            Console.WriteLine($"Sausage Pizza Added To Cart\n");
+            Console.WriteLine("Sausage Pizza Added To Cart\n");
             break;
         case 4:
             cart.CreatePizza("L", "Stuffed Crust", new List<String>{"Cheese, Pepperoni, Sausage, Onions, Bell Peppers, Olives"});
-            Console.WriteLine($"Custom Pizza Added To Cart\n");
+            Console.WriteLine("Custom Pizza Added To Cart\n");
             break;
           case 5:
             DisplayCart(cart);
@@ -230,7 +228,7 @@ namespace PizzaStore.Client
           case 6:
             var fmw = new FileManager();
             fmw.Write(cart);
-            System.Console.WriteLine("thank you, goodbye!");
+            System.Console.WriteLine("Thanks for visiting!\nSee you next time!");
             exit = true;
             break;
           case 7:
@@ -244,11 +242,13 @@ namespace PizzaStore.Client
     }
 
     static void DisplayCart(Order cart)
-    {
+    { 
+      Console.WriteLine("------ Cart ------");
       foreach (var pizza in cart.Pizzas)
       {
-        System.Console.WriteLine(pizza);
+        Console.WriteLine($"{pizza}\n");
       }
+      Console.WriteLine("------ **** ------");
     }
   }
 }

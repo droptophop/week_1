@@ -51,10 +51,10 @@ namespace PizzaStore.Domain.Models
 
       foreach(var t in Toppings)
       {
-        sb.Append(t + ", ");
+        sb.Append(t);
       }
 
-      return $"{Crust} \n{Size} \n{sb}";
+      return $"{Size} {Crust} \nToppings: {sb}";
     }
 
     //finalizers or destructors
